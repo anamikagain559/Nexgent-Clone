@@ -1,0 +1,153 @@
+/* ===== NAVBAR STYLES ===== */
+.nav-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* ===== HERO MOCKUP ===== */
+.mockup-container { perspective: 2000px; }
+.mockup-wrapper { transition: transform 0.5s ease; }
+.mockup-wrapper:hover { transform: rotateX(5deg) !important; }
+
+/* ===== SCROLL REVEAL ===== */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s cubic-bezier(0.5, 0, 0, 1), transform 0.8s cubic-bezier(0.5, 0, 0, 1);
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal.delay-100 { transition-delay: 100ms; }
+.reveal.delay-200 { transition-delay: 200ms; }
+.reveal.delay-300 { transition-delay: 300ms; }
+.reveal.delay-400 { transition-delay: 400ms; }
+
+/* ===== RESPONSIVE NAVBAR ===== */
+@media (max-width: 768px) {
+  .nav-desktop {
+    display: none !important;
+  }
+  .nav-cta-btn {
+    display: none !important;
+  }
+  .nav-mobile-btn {
+    display: block !important;
+  }
+}
+
+@media (min-width: 769px) {
+  .nav-desktop {
+    display: flex !important;
+  }
+  .nav-cta-btn {
+    display: inline-block !important;
+  }
+  .nav-mobile-btn {
+    display: none !important;
+  }
+  .nav-mobile-menu {
+    display: none !important;
+  }
+}
+
+/* ===== RESPONSIVE GRIDS ===== */
+@media (max-width: 768px) {
+  /* Features top row */
+  section [style*="gridTemplateColumns: '1.2fr 1fr'"],
+  section [style*="grid-template-columns: 1.2fr 1fr"] {
+    grid-template-columns: 1fr !important;
+  }
+  
+  /* Generic 3-col grids */
+  section [style*="repeat(3, 1fr)"] {
+    grid-template-columns: 1fr !important;
+  }
+  
+  /* Generic 2-col grids */
+  section [style*="repeat(2, 1fr)"] {
+    grid-template-columns: 1fr !important;
+  }
+  
+  /* Footer grid */
+  footer [style*="repeat(4, 1fr)"] {
+    grid-template-columns: 1fr 1fr !important;
+  }
+}
+
+@media (max-width: 480px) {
+  footer [style*="repeat(4, 1fr)"] {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* ===== HOVER EFFECTS ===== */
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 40px rgba(34, 197, 94, 0.4);
+}
+
+/* ===== KEYFRAME ANIMATIONS ===== */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes floatLeft {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-18px); }
+}
+
+@keyframes floatRight {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-14px); }
+}
+
+.floating-card-left {
+  animation: floatLeft 5s ease-in-out infinite;
+}
+
+.floating-card-right {
+  animation: floatRight 6s ease-in-out infinite;
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.float-card {
+  animation: float 4s ease-in-out infinite;
+}
+
+/* ===== SMOOTH SCROLLBAR ===== */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a1a1a1;
+}
+
+/* ===== SELECTION ===== */
+::selection {
+  background: rgba(34, 197, 94, 0.2);
+  color: #111827;
+}
