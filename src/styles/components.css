@@ -97,6 +97,46 @@
   to { opacity: 1; transform: translateY(0); }
 }
 
+/* Hero entrance - Navbar slides down */
+@keyframes heroNavSlideDown {
+  0% { opacity: 0; transform: translateY(-40px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Hero entrance - Content fades up */
+@keyframes heroFadeUp {
+  0% { opacity: 0; transform: translateY(50px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Hero entrance - Dashboard slides up from further below */
+@keyframes heroDashboardUp {
+  0% { opacity: 0; transform: translateY(80px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Hero entrance classes */
+.hero-nav-entrance {
+  animation: heroNavSlideDown 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  opacity: 0;
+}
+
+.hero-entrance {
+  opacity: 0;
+  animation: heroFadeUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.hero-entrance-d0 { animation-delay: 0.1s; }
+.hero-entrance-d1 { animation-delay: 0.25s; }
+.hero-entrance-d2 { animation-delay: 0.4s; }
+.hero-entrance-d3 { animation-delay: 0.55s; }
+.hero-entrance-d4 { animation-delay: 0.7s; }
+
+.hero-dashboard-entrance {
+  opacity: 0;
+  animation: heroDashboardUp 1.1s cubic-bezier(0.22, 1, 0.36, 1) 0.6s forwards;
+}
+
 @keyframes float {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-10px); }

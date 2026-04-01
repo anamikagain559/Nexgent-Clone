@@ -1,45 +1,23 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { ArrowUpRight } from 'lucide-react';
-
+import { motion } from 'framer-motion';
 const Hero = () => {
-  const [loaded, setLoaded] = useState(false);
-
-  useEffect(() => {
-    // Trigger entrance animations after a tiny delay
-    const timer = setTimeout(() => setLoaded(true), 100);
-    return () => clearTimeout(timer);
-  }, []);
-
-  // Shared animation style helper
-  const entrance = (delay) => ({
-    opacity: loaded ? 1 : 0,
-    transform: loaded ? 'translateY(0)' : 'translateY(40px)',
-    transition: `opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1) ${delay}ms, transform 0.9s cubic-bezier(0.22, 1, 0.36, 1) ${delay}ms`,
-  });
-
-  const navEntrance = {
-    opacity: loaded ? 1 : 0,
-    transform: loaded ? 'translateY(0)' : 'translateY(-30px)',
-    transition: `opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0ms, transform 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0ms`,
-  };
-
   return (
     <section id="home" style={{ position: 'relative', paddingTop: '140px', paddingBottom: '0', overflow: 'hidden', background: 'linear-gradient(180deg, #0a3d20 0%, #14532d 30%, #166534 50%, #14532d 70%, #0a3d20 100%)', minHeight: '100vh', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-      
+
       {/* Foggy green clouds */}
       <div style={{ position: 'absolute', top: '0', left: '0', width: '100%', height: '100%', pointerEvents: 'none' }}>
         <div style={{ position: 'absolute', top: '10%', left: '20%', width: '500px', height: '400px', background: 'radial-gradient(ellipse, rgba(34,197,94,0.15) 0%, transparent 70%)', filter: 'blur(60px)' }}></div>
         <div style={{ position: 'absolute', top: '5%', right: '15%', width: '400px', height: '350px', background: 'radial-gradient(ellipse, rgba(34,197,94,0.12) 0%, transparent 70%)', filter: 'blur(50px)' }}></div>
         <div style={{ position: 'absolute', bottom: '30%', left: '50%', transform: 'translateX(-50%)', width: '700px', height: '400px', background: 'radial-gradient(ellipse, rgba(34,197,94,0.08) 0%, transparent 70%)', filter: 'blur(80px)' }}></div>
-        {/* Side vignettes */}
         <div style={{ position: 'absolute', top: 0, left: 0, width: '30%', height: '100%', background: 'linear-gradient(90deg, rgba(0,0,0,0.3), transparent)' }}></div>
         <div style={{ position: 'absolute', top: 0, right: 0, width: '30%', height: '100%', background: 'linear-gradient(-90deg, rgba(0,0,0,0.3), transparent)' }}></div>
       </div>
 
       <div className="container" style={{ position: 'relative', zIndex: 10, textAlign: 'center', maxWidth: '900px' }}>
-        
-        {/* Badge with 5 gold stars — delay: 200ms */}
-        <div style={{ ...entrance(200), display: 'inline-flex', alignItems: 'center', gap: '10px', padding: '10px 22px', borderRadius: '999px', border: '1px solid rgba(255,255,255,0.2)', background: 'rgba(255,255,255,0.06)', color: '#fff', fontSize: '14px', fontWeight: 500, marginBottom: '36px', fontFamily: 'var(--font-body)', backdropFilter: 'blur(10px)' }}>
+
+        {/* Badge — delay-0 (first to appear) */}
+        <div className="hero-entrance hero-entrance-d0" style={{ display: 'inline-flex', alignItems: 'center', gap: '10px', padding: '10px 22px', borderRadius: '999px', border: '1px solid rgba(255,255,255,0.2)', background: 'rgba(255,255,255,0.06)', color: '#fff', fontSize: '14px', fontWeight: 500, marginBottom: '36px', fontFamily: 'var(--font-body)', backdropFilter: 'blur(10px)' }}>
           <span style={{ display: 'flex', gap: '2px' }}>
             {'★★★★★'.split('').map((s, i) => (
               <span key={i} style={{ color: '#facc15', fontSize: '14px' }}>★</span>
@@ -47,33 +25,35 @@ const Hero = () => {
           </span>
           10k Reviews Rated 4.9 of 5
         </div>
-        
-        {/* Main Heading — delay: 400ms */}
-        <h1 style={{ ...entrance(400), fontFamily: 'var(--font-heading)', fontSize: 'clamp(2.8rem, 6vw, 4.5rem)', fontWeight: 400, lineHeight: 1.1, marginBottom: '24px', color: '#ffffff', letterSpacing: '-0.01em' }}>
+
+        {/* Main Heading — delay-1 */}
+        <h1 className="hero-entrance hero-entrance-d1" style={{ fontFamily: 'var(--font-heading)', fontSize: 'clamp(2.8rem, 6vw, 4.5rem)', fontWeight: 400, lineHeight: 1.1, marginBottom: '24px', color: '#ffffff', letterSpacing: '-0.01em' }}>
           Take Control of <em style={{ fontStyle: 'italic' }}>Your Projects</em><br />With Nexgent
         </h1>
-        
-        {/* Description — delay: 600ms */}
-        <p style={{ ...entrance(600), color: 'rgba(255,255,255,0.6)', fontSize: '17px', lineHeight: 1.7, maxWidth: '560px', margin: '0 auto 40px', fontFamily: 'var(--font-body)' }}>
+
+        {/* Description — delay-2 */}
+        <p className="hero-entrance hero-entrance-d2" style={{ color: 'rgba(255,255,255,0.6)', fontSize: '17px', lineHeight: 1.7, maxWidth: '560px', margin: '0 auto 40px', fontFamily: 'var(--font-body)' }}>
           A smart task management platform that helps teams and individuals plan, prioritize, and complete work faster without stress.
         </p>
 
-        {/* CTA Button — delay: 800ms */}
-        <div style={{ ...entrance(800), display: 'flex', justifyContent: 'center', gap: '16px', marginBottom: '80px' }}>
+        {/* CTA Button — delay-3 */}
+        <div className="hero-entrance hero-entrance-d3" style={{ display: 'flex', justifyContent: 'center', gap: '16px', marginBottom: '80px' }}>
           <a href="#" className="btn-primary" style={{ fontSize: '16px', padding: '16px 36px' }}>
             Get Template <ArrowUpRight size={18} />
           </a>
         </div>
       </div>
 
-      {/* Dashboard Mockup — delay: 1000ms, slides up more dramatically */}
-      <div style={{
-        ...entrance(1000),
-        width: '100%', maxWidth: '1100px', margin: '0 auto', padding: '0 20px', position: 'relative', zIndex: 10,
-      }}>
+      {/* Dashboard — special longer animation with delay */}
+      <motion.div
+        className="hero-dashboard-entrance"
+        style={{ width: '100%', maxWidth: '1100px', margin: '0 auto', padding: '0 20px', position: 'relative', zIndex: 10 }}
+        initial={{ opacity: 0, y: 50, scale: 0.95 }}
+        animate={{ opacity: 1, y: 0, scale: 1 }}
+        transition={{ duration: 1, ease: "easeOut" }}
+      >
         <div style={{ background: '#fff', borderRadius: '16px 16px 0 0', overflow: 'hidden', boxShadow: '0 -20px 80px rgba(0,0,0,0.2)', border: '1px solid rgba(255,255,255,0.1)' }}>
-          
-          {/* Dashboard UI */}
+
           <div style={{ display: 'grid', gridTemplateColumns: '240px 1fr', minHeight: '500px' }}>
             {/* Sidebar */}
             <div style={{ background: '#fafbfc', borderRight: '1px solid #eee', padding: '20px 16px' }}>
@@ -83,8 +63,7 @@ const Hero = () => {
                 </div>
                 <span style={{ fontWeight: 700, fontSize: '16px', color: '#111' }}>Nexgent</span>
               </div>
-              
-              {/* Menu items */}
+
               {[
                 { name: 'Inbox', badge: '3' },
                 { name: 'Team Members', badge: null },
@@ -96,7 +75,7 @@ const Hero = () => {
                   {item.badge && <span style={{ background: '#fee2e2', color: '#ef4444', fontSize: '11px', padding: '1px 6px', borderRadius: '10px' }}>{item.badge}</span>}
                 </div>
               ))}
-              
+
               <div style={{ fontSize: '11px', color: '#999', fontWeight: 600, letterSpacing: '0.05em', marginTop: '20px', marginBottom: '10px', paddingLeft: '12px' }}>Main menu</div>
               <div style={{ padding: '10px 12px', borderRadius: '8px', fontSize: '13px', color: '#555', marginBottom: '2px' }}>Overview</div>
               <div style={{ padding: '10px 12px', borderRadius: '8px', fontSize: '13px', color: '#fff', background: '#22c55e', marginBottom: '2px', fontWeight: 500 }}>Projects</div>
@@ -110,10 +89,9 @@ const Hero = () => {
                 <div key={i} style={{ padding: '6px 12px', fontSize: '12px', color: '#999' }}>{s}</div>
               ))}
             </div>
-            
+
             {/* Main Content */}
             <div style={{ padding: '20px 24px' }}>
-              {/* Header */}
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px', paddingBottom: '16px', borderBottom: '1px solid #f0f0f0' }}>
                 <span style={{ fontWeight: 600, fontSize: '16px' }}>Dashboard</span>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
@@ -142,7 +120,7 @@ const Hero = () => {
                     </div>
                     <div style={{ height: '30px', position: 'relative' }}>
                       <svg width="100%" height="30" style={{ display: 'block' }}>
-                        <path d={`M0,25 Q20,${10+i*5} 40,15 T80,${12+i*3} T120,${18-i*2} T160,10`} fill="none" stroke={s.color} strokeWidth="2" />
+                        <path d={`M0,25 Q20,${10 + i * 5} 40,15 T80,${12 + i * 3} T120,${18 - i * 2} T160,10`} fill="none" stroke={s.color} strokeWidth="2" />
                       </svg>
                     </div>
                     <div style={{ fontSize: '12px', marginTop: '4px' }}>
@@ -195,7 +173,7 @@ const Hero = () => {
             </div>
           </div>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 };
