@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 
 const Features = () => {
   return (
@@ -30,23 +31,12 @@ const Features = () => {
             overflow: hidden;
             display: flex;
             flex-direction: column;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-          }
-          .feature-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.06);
+            cursor: pointer;
           }
           @media (max-width: 900px) {
             .features-row-1, .features-row-2 {
               grid-template-columns: 1fr;
             }
-          }
-          /* Hover animation for floating pills */
-          .float-pill {
-            transition: transform 2s ease-in-out;
-          }
-          .feature-card:hover .float-pill {
-            transform: translateY(-8px);
           }
         `}
       </style>
@@ -85,10 +75,15 @@ const Features = () => {
 
       <div className="features-container">
 
-        {/* ROW 1: Smart Task & Calendar (Kept from previous layout) */}
         <div className="features-row-1">
-          {/* Card 1: Smart Task Management */}
-          <div className="feature-card" style={{ padding: '48px 48px 0', minHeight: '520px' }}>
+          {/* Card 1: Smart Task Management (45 Degree Rotation) */}
+          <motion.div
+            className="feature-card"
+            style={{ padding: '48px 48px 0', minHeight: '520px' }}
+            initial="rest"
+            whileHover="hover"
+            animate="rest"
+          >
             <div>
               <h3 style={{ fontSize: '24px', fontWeight: 600, color: '#111827', marginBottom: '12px' }}>
                 Smart Task Management
@@ -98,33 +93,67 @@ const Features = () => {
               </p>
             </div>
             <div style={{ position: 'relative', marginTop: 'auto', display: 'flex', justifyContent: 'center' }}>
-              <img
+              <motion.img
+                variants={{
+                  rest: { rotate: 0 },
+                  hover: { rotate: 45 } // Here, 45 is given instead of 120
+                }}
+                transition={{ duration: 0.6, type: "spring" }}
                 src="https://cdn.prod.website-files.com/6994265eb4518368b938e54c/69996ac1a85b23427ef3a28f_Frame%20238%20(1).webp"
                 alt="Smart Task Management Layout"
-                style={{ width: '100%', maxWidth: '400px', objectFit: 'contain', borderTopLeftRadius: '16px', borderTopRightRadius: '16px' }}
+                style={{ width: '100%', maxWidth: '400px', objectFit: 'contain', borderTopLeftRadius: '16px', borderTopRightRadius: '16px', zIndex: 2 }}
               />
               <img
                 src="https://cdn.prod.website-files.com/6994265eb4518368b938e54c/699957f9d6e9321e84f2617a_Rectangle%2068.webp"
                 alt="shadow"
-                style={{ position: 'absolute', bottom: 0, width: '100%', opacity: 0.5, zIndex: -1 }}
+                style={{ position: 'absolute', bottom: 0, width: '100%', opacity: 0.5, zIndex: 1 }}
               />
             </div>
-          </div>
+          </motion.div>
 
           {/* Card 2: Calendar & Deadlines */}
-          <div className="feature-card" style={{ padding: '48px' }}>
+          <motion.div
+            className="feature-card"
+            style={{ padding: '48px' }}
+            initial="rest"
+            whileHover="hover"
+            animate="rest"
+          >
             <div style={{ position: 'relative', height: '300px', display: 'flex', justifyContent: 'center', alignItems: 'center', marginBottom: '32px' }}>
-              {/* Base Circle */}
               <img
                 src="https://cdn.prod.website-files.com/6994265eb4518368b938e54c/69ae8228c6670e7502c5ec80_Frame%201000004996.webp"
                 alt="Calendar Base"
                 style={{ width: '80%', objectFit: 'contain' }}
               />
-              {/* Floating SVG Pills */}
-              <img src="https://cdn.prod.website-files.com/6994265eb4518368b938e54c/699970afd1611a42826579d0_Frame%201000005001.svg" alt="Completed" className="float-pill" style={{ position: 'absolute', top: '15%', left: '0%', width: '110px' }} />
-              <img src="https://cdn.prod.website-files.com/6994265eb4518368b938e54c/6999712c6bb9abc579cbc0a2_Frame%201000005000.svg" alt="Process" className="float-pill" style={{ position: 'absolute', top: '5%', right: '0%', width: '100px', transitionDelay: '0.2s' }} />
-              <img src="https://cdn.prod.website-files.com/6994265eb4518368b938e54c/699970e18df9d2079ba6c899_Frame%201000004999.svg" alt="Remaining" className="float-pill" style={{ position: 'absolute', bottom: '20%', left: '-5%', width: '120px', transitionDelay: '0.4s' }} />
-              <img src="https://cdn.prod.website-files.com/6994265eb4518368b938e54c/699971412aea09bf1aba6bc8_Frame%201000005002.svg" alt="New Task" className="float-pill" style={{ position: 'absolute', bottom: '25%', right: '-5%', width: '100px', transitionDelay: '0.6s' }} />
+
+              <motion.img
+                src="https://cdn.prod.website-files.com/6994265eb4518368b938e54c/699970afd1611a42826579d0_Frame%201000005001.svg"
+                alt="Completed"
+                variants={{ rest: { x: 0, y: 0 }, hover: { x: 30, y: 30 } }}
+                transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                style={{ position: 'absolute', top: '15%', left: '0%', width: '110px' }}
+              />
+              <motion.img
+                src="https://cdn.prod.website-files.com/6994265eb4518368b938e54c/6999712c6bb9abc579cbc0a2_Frame%201000005000.svg"
+                alt="Process"
+                variants={{ rest: { x: 0, y: 0 }, hover: { x: -30, y: 30 } }}
+                transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                style={{ position: 'absolute', top: '5%', right: '0%', width: '100px' }}
+              />
+              <motion.img
+                src="https://cdn.prod.website-files.com/6994265eb4518368b938e54c/699970e18df9d2079ba6c899_Frame%201000004999.svg"
+                alt="Remaining"
+                variants={{ rest: { x: 0, y: 0 }, hover: { x: 30, y: -30 } }}
+                transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                style={{ position: 'absolute', bottom: '20%', left: '-5%', width: '120px' }}
+              />
+              <motion.img
+                src="https://cdn.prod.website-files.com/6994265eb4518368b938e54c/699971412aea09bf1aba6bc8_Frame%201000005002.svg"
+                alt="New Task"
+                variants={{ rest: { x: 0, y: 0 }, hover: { x: -30, y: -30 } }}
+                transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                style={{ position: 'absolute', bottom: '25%', right: '-5%', width: '100px' }}
+              />
             </div>
             <div>
               <h3 style={{ fontSize: '24px', fontWeight: 600, color: '#111827', marginBottom: '12px' }}>
@@ -134,14 +163,18 @@ const Features = () => {
                 Visualize deadlines with calendar and timeline views for clearer planning and time management.
               </p>
             </div>
-          </div>
+          </motion.div>
         </div>
 
-        {/* ROW 2: Team Collaboration (Wide) & Smart Notifications (Narrow) */}
         <div className="features-row-2">
-
-          {/* Card 3: Team Collaboration (Horizontal Layout) */}
-          <div className="feature-card" style={{ padding: '48px 0 0 0' }}>
+          {/* Card 3: Team Collaboration */}
+          <motion.div
+            className="feature-card"
+            style={{ padding: '48px 0 0 0' }}
+            initial="rest"
+            whileHover="hover"
+            animate="rest"
+          >
             <div style={{ padding: '0 48px' }}>
               <h3 style={{ fontSize: '24px', fontWeight: 600, color: '#111827', marginBottom: '12px' }}>
                 Team Collaboration
@@ -150,44 +183,73 @@ const Features = () => {
                 Comment, tag teammates, share files, and stay aligned in real time across tasks.
               </p>
             </div>
-            {/* Mockup Container anchored to bottom */}
             <div style={{ position: 'relative', height: '280px', marginTop: '32px', overflow: 'hidden' }}>
-              <img
-                src="https://cdn.prod.website-files.com/6994265eb4518368b938e54c/699a6fe00fe19f906bcaeaac_Frame%2038.webp"
-                alt="Action Required"
-                style={{ position: 'absolute', left: '-5%', bottom: '20px', width: '35%', zIndex: 1 }}
-              />
-              <img
-                src="https://cdn.prod.website-files.com/6994265eb4518368b938e54c/699a70baa59e3c8bc8384217_Frame%2037.webp"
-                alt="Project Status"
-                style={{ position: 'absolute', left: '25%', bottom: '-20px', width: '50%', zIndex: 3 }}
-              />
+              {/* Left Image - Project Members (Swapped from Right) */}
               <img
                 src="https://cdn.prod.website-files.com/6994265eb4518368b938e54c/699a704e69a00e6786701461_Frame%2017.webp"
                 alt="Project Members"
-                style={{ position: 'absolute', right: '-10%', bottom: '30px', width: '40%', zIndex: 2 }}
+                style={{ position: 'absolute', left: '-5%', bottom: '30px', width: '40%', zIndex: 1 }}
+              />
+
+              {/* Center Image - Action Required (Swapped from Left) */}
+              <img
+                src="https://cdn.prod.website-files.com/6994265eb4518368b938e54c/699a6fe00fe19f906bcaeaac_Frame%2038.webp"
+                alt="Action Required"
+                style={{ position: 'absolute', left: '30%', bottom: '20px', width: '35%', zIndex: 2 }}
+              />
+
+              {/* Animated Right Image - Project Status (Swapped from Center) */}
+              <motion.img
+                variants={{
+                  rest: { y: 0 },
+                  hover: { y: -30 }
+                }}
+                transition={{ duration: 0.5, ease: "easeInOut" }}
+                src="https://cdn.prod.website-files.com/6994265eb4518368b938e54c/699a70baa59e3c8bc8384217_Frame%2037.webp"
+                alt="Project Status"
+                style={{ position: 'absolute', right: '-10%', bottom: '-20px', width: '50%', zIndex: 3 }}
               />
             </div>
-          </div>
+          </motion.div>
 
-          {/* Card 4: Smart Notifications (Vertical Layout) */}
-          <div className="feature-card" style={{ padding: '48px', justifyContent: 'space-between' }}>
+          {/* Card 4: Smart Notifications */}
+          <motion.div
+            className="feature-card"
+            style={{ padding: '48px', justifyContent: 'space-between' }}
+            initial="rest"
+            whileHover="hover"
+            animate="rest"
+          >
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '16px', marginBottom: '40px', marginTop: '10px' }}>
-              {/* Stacked Notification Cards */}
-              <img
+              <motion.img
+                variants={{
+                  rest: { x: -15, scale: 1 },
+                  hover: { x: 0, scale: 1.05 }
+                }}
+                transition={{ type: "spring", stiffness: 300, damping: 25 }}
                 src="https://cdn.prod.website-files.com/6994265eb4518368b938e54c/699a79df7c45b30b06d31335_Group%201000003890.svg"
                 alt="Project Manage Alert"
-                style={{ width: '100%', maxWidth: '280px', transform: 'translateX(-15px)' }}
+                style={{ width: '100%', maxWidth: '280px' }}
               />
-              <img
+              <motion.img
+                variants={{
+                  rest: { scale: 1.02 },
+                  hover: { scale: 1.05 }
+                }}
+                transition={{ type: "spring", stiffness: 300, damping: 25 }}
                 src="https://cdn.prod.website-files.com/6994265eb4518368b938e54c/69ae4cd704260a97e203d945_Group%201000003892.webp"
                 alt="In Progress Alert"
-                style={{ width: '100%', maxWidth: '300px', zIndex: 2, transform: 'scale(1.02)' }}
+                style={{ width: '100%', maxWidth: '300px', zIndex: 2 }}
               />
-              <img
+              <motion.img
+                variants={{
+                  rest: { x: 15, scale: 1 },
+                  hover: { x: 0, scale: 1.05 }
+                }}
+                transition={{ type: "spring", stiffness: 300, damping: 25 }}
                 src="https://cdn.prod.website-files.com/6994265eb4518368b938e54c/699a79df7c45b30b06d31335_Group%201000003890.svg"
                 alt="Project Manage Alert"
-                style={{ width: '100%', maxWidth: '280px', transform: 'translateX(15px)' }}
+                style={{ width: '100%', maxWidth: '280px' }}
               />
             </div>
             <div>
@@ -198,10 +260,9 @@ const Features = () => {
                 Never miss a task with real-time reminders and alerts that keep you on schedule.
               </p>
             </div>
-          </div>
+          </motion.div>
 
         </div>
-
       </div>
     </section>
   );
