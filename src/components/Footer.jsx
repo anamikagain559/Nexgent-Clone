@@ -9,6 +9,30 @@ const Footer = () => {
       
       <div className="container" style={{ position: 'relative', zIndex: 10 }}>
         
+        {/* CTA Section */}
+        <div style={{ textAlign: 'center', marginBottom: '80px', paddingBottom: '60px', borderBottom: '1px solid rgba(255,255,255,0.08)' }}>
+          <h2 style={{ color: '#fff', marginBottom: '16px', fontSize: 'clamp(2rem, 4vw, 3rem)', fontFamily: 'var(--font-heading)', fontWeight: 500, letterSpacing: '-0.02em' }}>
+            Ready to Get More Done
+          </h2>
+          <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '18px', maxWidth: '520px', margin: '0 auto 40px', lineHeight: 1.6 }}>
+            Start organizing your tasks, collaborating with your team, and staying on top of deadlines all in one simple, powerful tool.
+          </p>
+          <a href="#" style={{ 
+            display: 'inline-block',
+            background: '#22c55e', 
+            color: '#000', 
+            textDecoration: 'none',
+            borderRadius: '999px',
+            fontSize: '15px',
+            fontWeight: 600,
+            padding: '16px 32px',
+            boxShadow: '0 0 24px rgba(34,197,94,0.3)',
+            transition: 'all 0.3s ease'
+          }}>
+            Get Started
+          </a>
+        </div>
+        
         {/* Big NEXGENT branding */}
         <div style={{ textAlign: 'center', marginBottom: '24px' }}>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '20px', marginBottom: '16px' }}>

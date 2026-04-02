@@ -20,53 +20,51 @@ const Navbar = () => {
       background: scrolled ? 'rgba(3,20,11,0.95)' : 'transparent',
       backdropFilter: scrolled ? 'blur(20px)' : 'none',
       borderBottom: scrolled ? '1px solid rgba(255,255,255,0.06)' : '1px solid transparent',
+      paddingTop: scrolled ? '16px' : '32px',
+      paddingBottom: scrolled ? '16px' : '0'
     }}>
-      <div className="container">
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '18px 0' }}>
-          
-          {/* Logo */}
-          <a href="#" style={{ display: 'flex', alignItems: 'center', gap: '10px', textDecoration: 'none' }}>
-            <div style={{ width: '34px', height: '34px', borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#22c55e' }}>
-              <div style={{ width: '14px', height: '14px', background: '#000', borderRadius: '3px', transform: 'rotate(45deg)' }}></div>
-            </div>
-            <span style={{ fontSize: '20px', fontWeight: 700, letterSpacing: '-0.03em', color: '#fff', fontFamily: 'var(--font-body)' }}>Nexgent</span>
-          </a>
+      <div className="container" style={{ maxWidth: '1274px', padding: '0 15px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+        
+        {/* Logo */}
+        <a href="#" style={{ display: 'flex', alignItems: 'center', gap: '10px', cursor: 'pointer', textDecoration: 'none' }}>
+          <img src="https://cdn.prod.website-files.com/6994265eb4518368b938e54c/699aa7b4b9254eb870446a11_Delco_Products_logo%201%20(2).png" alt="Delco Products Logo" style={{ height: '38px', width: 'auto', objectFit: 'contain' }} />
+          <span style={{ fontSize: '22px', fontWeight: 700, letterSpacing: '-0.03em', color: '#fff', fontFamily: 'var(--font-heading)' }}>Nexgent</span>
+        </a>
 
-          {/* Desktop Links */}
-          <div className="nav-desktop" style={{ display: 'flex', alignItems: 'center', gap: '32px' }}>
-            {navLinks.map(item => (
-              <a key={item} href={`#${item.toLowerCase()}`} style={{ color: 'rgba(255,255,255,0.7)', fontSize: '14px', fontWeight: 500, transition: 'color 0.3s', textDecoration: 'none' }}
-                 onMouseEnter={e => e.target.style.color = '#22c55e'}
-                 onMouseLeave={e => e.target.style.color = 'rgba(255,255,255,0.7)'}
-              >{item}</a>
-            ))}
-          </div>
-
-          {/* CTA */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-            <a href="#" className="nav-cta-btn" style={{
-              padding: '10px 24px', borderRadius: '999px',
-              background: '#fff', color: '#000', fontSize: '14px', fontWeight: 600,
-              transition: 'all 0.3s', textDecoration: 'none'
-            }}>Join Now</a>
-            <button className="nav-mobile-btn" onClick={() => setIsOpen(!isOpen)} style={{ background: 'none', color: '#fff', padding: '4px', display: 'none' }}>
-              {isOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
-          </div>
+        {/* Desktop Links */}
+        <div className="nav-desktop" style={{ display: 'flex', alignItems: 'center', gap: '32px' }}>
+          {navLinks.map(item => (
+            <a key={item} href={`#${item.toLowerCase()}`} style={{ color: '#e6e6e6', fontSize: '16px', fontWeight: 500, transition: 'color 0.3s', textDecoration: 'none' }}
+               onMouseEnter={e => e.target.style.color = '#ffffff'}
+               onMouseLeave={e => e.target.style.color = '#e6e6e6'}
+            >{item}</a>
+          ))}
         </div>
 
-        {/* Mobile Menu */}
-        {isOpen && (
-          <div className="nav-mobile-menu" style={{ paddingBottom: '20px', borderTop: '1px solid rgba(255,255,255,0.05)' }}>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', marginTop: '16px', textAlign: 'center' }}>
-              {navLinks.map(item => (
-                <a key={item} href={`#${item.toLowerCase()}`} onClick={() => setIsOpen(false)} style={{ color: 'rgba(255,255,255,0.7)', fontSize: '15px', fontWeight: 500 }}>{item}</a>
-              ))}
-              <a href="#" style={{ padding: '10px 24px', borderRadius: '999px', background: '#fff', color: '#000', fontSize: '14px', fontWeight: 600, width: 'fit-content', margin: '8px auto 0' }}>Join Now</a>
-            </div>
-          </div>
-        )}
+        {/* CTA */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+          <a href="#" className="nav-cta-btn" style={{
+            padding: '12px 24px', borderRadius: '50px',
+            background: '#ffffff', color: '#0f0f0f', fontSize: '15px', fontWeight: 500,
+            transition: 'all 0.3s', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', justifyContent: 'center'
+          }}>Join Now</a>
+          <button className="nav-mobile-btn" onClick={() => setIsOpen(!isOpen)} style={{ background: 'none', color: '#fff', padding: '4px', display: 'none', border: 'none', cursor: 'pointer' }}>
+            {isOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
       </div>
+
+      {/* Mobile Menu */}
+      {isOpen && (
+        <div className="nav-mobile-menu" style={{ padding: '20px 0', borderTop: '1px solid rgba(255,255,255,0.05)', background: 'rgba(3,20,11,0.98)' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', textAlign: 'center' }}>
+            {navLinks.map(item => (
+              <a key={item} href={`#${item.toLowerCase()}`} onClick={() => setIsOpen(false)} style={{ color: '#e6e6e6', fontSize: '16px', fontWeight: 500, textDecoration: 'none' }}>{item}</a>
+            ))}
+            <a href="#" style={{ padding: '12px 24px', borderRadius: '50px', background: '#fff', color: '#000', fontSize: '15px', fontWeight: 600, width: 'fit-content', margin: '8px auto 0', textDecoration: 'none' }}>Join Now</a>
+          </div>
+        </div>
+      )}
     </nav>
   );
 };

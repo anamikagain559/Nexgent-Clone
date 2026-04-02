@@ -33,7 +33,7 @@ const Pricing = () => {
   ];
 
   return (
-    <section id="pricing" className="reveal" style={{ padding: '100px 0', background: '#fff' }}>
+    <section id="pricing" className="reveal" style={{ padding: '60px 0', background: '#fff' }}>
       <div className="container" style={{ textAlign: 'center', maxWidth: '960px' }}>
         <p className="reveal delay-100 section-label">Pricing</p>
         <h2 className="reveal delay-200 section-title">

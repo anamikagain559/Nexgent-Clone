@@ -1,30 +1,54 @@
 import React from 'react';
 
 const PartnerBanner = () => {
-  const logos = [
-    { name: 'Loom', color: '#625DF5' },
-    { name: 'Notion', color: '#000' },
-    { name: 'Slack', color: '#4A154B' },
-    { name: 'Linear', color: '#5E6AD2' },
-    { name: 'Figma', color: '#F24E1E' },
-    { name: 'Asana', color: '#F06A6A' },
-  ];
-  
   return (
-    <section className="reveal" style={{ background: '#fff', padding: '60px 0', borderBottom: '1px solid #f3f4f6' }}>
+    <section className="partner-banner reveal">
       <div className="container">
-        <p style={{ textAlign: 'center', fontSize: '13px', fontWeight: 600, color: '#9ca3af', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '32px' }}>
+        <p className="partner-banner-text">
           Trusted by teams at over 1,000 of the world
         </p>
-        <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', alignItems: 'center', gap: '48px', opacity: 0.55 }}>
-          {logos.map((logo, i) => (
-            <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '18px', fontWeight: 700, color: '#374151', letterSpacing: '-0.02em', cursor: 'pointer', transition: 'opacity 0.3s' }}
-                 onMouseEnter={e => e.currentTarget.style.opacity = '1'}
-                 onMouseLeave={e => e.currentTarget.style.opacity = '0.7'}>
-              <div style={{ width: '24px', height: '24px', background: logo.color, borderRadius: '5px', opacity: 0.7 }}></div>
-              {logo.name}
-            </div>
-          ))}
+        
+        <div className="trusted-responser-logo">
+          <div className="responser-logo">
+            <img
+              src="https://cdn.prod.website-files.com/6994265eb4518368b938e54c/69993fed961b7f9754eaf3e4_Frame%20(17).svg"
+              loading="lazy"
+              alt="Partner Logo 1"
+              className="logo"
+            />
+          </div>
+          <div className="responser-logo">
+            <img
+              src="https://cdn.prod.website-files.com/6994265eb4518368b938e54c/69993fbefbc30d92613f753a_Frame%20(15).svg"
+              loading="lazy"
+              alt="Partner Logo 2"
+              className="logo"
+            />
+          </div>
+          <div className="responser-logo">
+            <img
+              src="https://cdn.prod.website-files.com/6994265eb4518368b938e54c/69993efcab1d6f06a72d8a9d_Frame%20(10).svg"
+              loading="lazy"
+              alt="Partner Logo 3"
+              className="logo"
+            />
+          </div>
+          <div className="responser-logo">
+            <img
+              src="https://cdn.prod.website-files.com/6994265eb4518368b938e54c/69993efc75373abe6beceb96_Frame%20(11).svg"
+              loading="lazy"
+              alt="Partner Logo 4"
+              className="logo"
+            />
+          </div>
+          <div className="responser-logo">
+            <img
+              src="https://cdn.prod.website-files.com/6994265eb4518368b938e54c/69993efcd59d549b33567daa_Frame%20(12).svg"
+              loading="lazy"
+              alt="Partner Logo 5"
+              className="logo"
+            />
+          </div>
         </div>
       </div>
     </section>
