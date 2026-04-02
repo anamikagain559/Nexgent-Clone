@@ -14,7 +14,7 @@ const Benefits = () => {
   ];
 
   return (
-    <section id="benefits" style={{ padding: '120px 24px', background: '#f6f8fb' }}>
+    <section id="benefits" style={{ padding: '60px 24px 120px 24px', background: '#f6f8fb' }}>
       <div className="container" style={{ maxWidth: '1240px', margin: '0 auto' }}>
 
         {/* Header */}

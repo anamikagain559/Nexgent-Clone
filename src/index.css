@@ -290,7 +290,7 @@ button {
 
 /* Features Section Upgrade */
 .features-section {
-  padding: 140px 24px;
+  padding: 100px 24px 60px;
   background-color: #f6f8fb; /* Off-white/slate grey background */
   overflow: hidden;
 }
@@ -429,8 +429,9 @@ button {
 }
 
 .feature-card.text-top .feature-card-visual img {
-  border-radius: 20px 20px 0 0;
-  box-shadow: 0 -20px 40px rgba(0,0,0,0.03);
+  width: 100%;
+  border-radius: 0 0 32px 32px;
+  box-shadow: none; /* Removed internal shadow for flush look */
 }
 
 .feature-card.text-bottom {
@@ -442,8 +443,9 @@ button {
 }
 
 .feature-card.text-bottom .feature-card-visual img {
-  border-radius: 0 0 20px 20px;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.03);
+  width: 100%;
+  border-radius: 32px 32px 0 0;
+  box-shadow: none;
 }
 
 @media (max-width: 1024px) {

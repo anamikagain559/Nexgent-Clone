@@ -4,7 +4,7 @@ import { Calendar, MessageSquare, Paperclip, Snowflake } from 'lucide-react';
 
 const HowItWorks = () => {
   return (
-    <section id="how-it-works" className="reveal" style={{ padding: '120px 20px', background: '#f9fafb' }}>
+    <section id="how-it-works" className="reveal" style={{ padding: '60px 20px 60px 20px', background: '#f9fafb' }}>
       <div className="container" style={{ maxWidth: '1200px', margin: '0 auto' }}>
 
         {/* Header */}
